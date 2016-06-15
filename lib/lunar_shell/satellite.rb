@@ -5,10 +5,18 @@ module LunarShell
         klass(command).new(args) rescue nil
       end
 
+      def all
+        satellites_dir.map {|f| File.basename(f, '_satellite.rb') }
+      end
+
       private
 
       def klass(command)
         "LunarShell::#{command.classify}Satellite".constantize
+      end
+
+      def satellites_dir
+        Dir[LunarShell::Engine.root + 'app/satellites/lunar_shell/*.rb']
       end
     end
 
