@@ -1,13 +1,13 @@
 module LunarShell
   class HelpSatellite < LunarShell::Satellite
     def run
-      "Try these commands:<br>&nbsp;&nbsp;&nbsp;#{satellites}"
+      satellites
     end
 
     private
 
     def satellites
-      self.class.superclass.all.join('&nbsp;&nbsp;&nbsp;')
+      self.class.superclass.all.sort
     end
   end
 end

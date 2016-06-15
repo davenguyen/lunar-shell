@@ -1,2 +1,4 @@
-$('#shell-history').append('<%= j render('output') %>');
+<% satellite_partial = "lunar_shell/satellites/#{command}/_output" %>
+<% output = lookup_context.exists?(satellite_partial) ? satellite_partial.gsub('/_', '/') : 'output' %>
+$('#shell-history').append('<%= j render(output) %>');
 $('#shell-cli').html('<%= j render('/lunar_shell/shells/cli') %>');
