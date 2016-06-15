@@ -1,4 +1,4 @@
-<%= form_tag '/', id: 'cli' do %>
+<%= form_tag '/', id: 'cli', remote: true do %>
   <%= label_tag :command_line, render('prompt') %>
   <%= text_field_tag :command_line, '', class: 'command_line' %>
 <% end %>

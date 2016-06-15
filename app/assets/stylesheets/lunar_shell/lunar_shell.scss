@@ -24,9 +24,12 @@ a {
     position: absolute;
 
     .input {
-      span { color: #fff; }
       color: #999;
-      margin: 2px;
+
+      span {
+        color: #fff;
+        margin-right: 7px;
+      }
     }
 
     .output {
@@ -47,7 +50,10 @@ a {
     width: 100%;
 
     label {
-      span { color: #fff; }
+      span {
+        color: #fff;
+        margin-right: 3px;
+      }
     }
 
     input {
@@ -55,7 +61,6 @@ a {
       border: none;
       color: #999;
       font: 20px 'Roboto Condensed';
-      margin: 0 0 0 3px;
 
       &:focus {
         outline: none;
