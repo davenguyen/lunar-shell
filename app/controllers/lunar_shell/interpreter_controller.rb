@@ -1,6 +1,7 @@
 module LunarShell
   class InterpreterController < ApplicationController
     def create
+      render 'clear' if command == 'clear'
     end
 
     private

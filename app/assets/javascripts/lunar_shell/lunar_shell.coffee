@@ -4,10 +4,11 @@ focus_cli = ->
 
 form_submit = ->
   $('#cli').submit (e) ->
-    e.preventDefault()
-    $('#shell-history').append "<div class=\"input\"></div>"
-    $('#shell-cli .prompt').clone().appendTo('#shell-history .input:last')
-    $('.input').last().append $('#command_line').val()
+    input = $('#command_line').val()
+    if input != 'clear'
+      $('#shell-history').append "<div class=\"input\"></div>"
+      $('#shell-cli .prompt').clone().appendTo('#shell-history .input:last')
+      $('.input').last().append input
 
 $ ->
   # Set on page load
