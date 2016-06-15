@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount LunarShell::Engine => "/lunar_shell"
+  mount LunarShell::Engine => "/"
 end
