@@ -13,8 +13,12 @@ module LunarShell
       @command ||= arguments.shift
     end
 
+    def satellite
+      @satellite ||= LunarShell::Satellite[command, arguments]
+    end
+
     def output
-      "Command not found: #{command}."
+      satellite.try(:run) || "Command not found: #{command}."
     end
     helper_method :output
   end
