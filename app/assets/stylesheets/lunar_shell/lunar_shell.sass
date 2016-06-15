@@ -1,0 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700italic,400,700)
+
+*
+  margin: 0
+  padding: 0
+
+body
+  background-color: black
+  overflow-x: hidden
+
+a
+  color: #ccc
+
+#shell
+  font: 20px 'Roboto Condensed'
+
+  #shell-history
+    bottom: 49px
+    color: #4285f4
+    margin: 0 25px
+    position: absolute
+
+    .input
+      color: #999
+
+      span
+        color: #fff
+        margin-right: 7px
+
+    .output
+      margin: 2px
+
+    .greeting
+      font-size: 22px
+      margin-bottom: 2px
+
+  #shell-cli
+    bottom: 0
+    color: #999
+    margin: 0 25px 25px 25px
+    position: absolute
+    width: 100%
+
+    label
+      span
+        color: #fff
+        margin-right: 3px
+
+    input
+      background-color: black
+      border: none
+      color: #999
+      font: 20px 'Roboto Condensed'
+
+      &:focus
+        outline: none
