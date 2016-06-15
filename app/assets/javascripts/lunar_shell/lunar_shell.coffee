@@ -21,3 +21,4 @@ $ ->
 # Set after running command
 $(document).ajaxComplete ->
   focus_cli()
+  form_submit()
