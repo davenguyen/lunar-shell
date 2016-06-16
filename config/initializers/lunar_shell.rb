@@ -1,0 +1,2 @@
+USER_PROMPT = '>'
+ROOT_PROMPT = '#'
