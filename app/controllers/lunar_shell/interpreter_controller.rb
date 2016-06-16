@@ -1,5 +1,5 @@
 module LunarShell
-  class InterpreterController < ApplicationController
+  class InterpreterController < LunarShell::ApplicationController
     def create
       render 'clear' if command == 'clear'
     end

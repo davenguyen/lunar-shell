@@ -1,5 +1,5 @@
 module LunarShell
-  class ShellsController < ApplicationController
+  class ShellsController < LunarShell::ApplicationController
     before_action :initialize_shell
 
     def show
