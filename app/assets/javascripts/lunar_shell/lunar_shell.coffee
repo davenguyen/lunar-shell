@@ -2,7 +2,7 @@
 focus_cli = ->
   $('#command_line').focus()
 
-form_submit = ->
+cli_submit = ->
   $('#cli').submit (e) ->
     input = $('#command_line').val()
     if input != 'clear'
@@ -13,7 +13,7 @@ form_submit = ->
 $ ->
   # Set on page load
   focus_cli()
-  form_submit()
+  cli_submit()
 
   # Focus when clicking anywhere on the page
   $(document).click ->
@@ -22,4 +22,4 @@ $ ->
 # Set after running command
 $(document).ajaxComplete ->
   focus_cli()
-  form_submit()
+  cli_submit()
