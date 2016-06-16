@@ -12,7 +12,7 @@ a
   color: #ccc
 
 #shell
-  font: 20px 'Roboto Condensed'
+  font: 19px 'Roboto Condensed'
 
   #shell-history
     bottom: 49px
@@ -20,19 +20,15 @@ a
     margin: 0 25px
     position: absolute
 
-    .input
-      color: #999
-
-      span
-        color: #fff
-        margin-right: 7px
-
-    .output
-      margin: 2px
-
-    .greeting
-      font-size: 22px
+    div
+      line-height: 20px
       margin-bottom: 2px
+
+      &.input
+        color: #999
+
+      &.greeting
+        font-size: 1.3em
 
   #shell-cli
     bottom: 0
@@ -41,16 +37,15 @@ a
     position: absolute
     width: 100%
 
-    label
-      span
-        color: #fff
-        margin-right: 3px
-
     input
       background-color: black
       border: none
       color: #999
-      font: 20px 'Roboto Condensed'
+      font: 19px 'Roboto Condensed'
 
       &:focus
         outline: none
+
+  span.prompt
+    color: #fff
+    margin-right: 3px
