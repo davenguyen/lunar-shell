@@ -16,7 +16,7 @@ module LunarShell
     helper_method :command
 
     def satellite
-      @satellite ||= LunarShell::Satellite[command, arguments]
+      @satellite ||= LunarShell::Satellite[command, current_user, arguments]
     end
     helper_method :satellite
 
