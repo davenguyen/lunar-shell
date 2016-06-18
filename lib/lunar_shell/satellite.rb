@@ -1,7 +1,7 @@
 module LunarShell
   class Satellite
     class << self
-      def [](command, user, *args)
+      def [](command, user, args)
         klass(command).new(user, args) rescue nil
       end
 
@@ -22,7 +22,7 @@ module LunarShell
 
     attr_accessor :args, :user
 
-    def initialize(user, *args)
+    def initialize(user, args)
       self.user = user
       self.args = args
     end
