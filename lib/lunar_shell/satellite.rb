@@ -26,5 +26,9 @@ module LunarShell
       self.user = user
       self.args = args
     end
+
+    def args?
+      args.any?
+    end
   end
 end
