@@ -1,0 +1,6 @@
+<% if output[:status] == :logout %>
+  <% clear_current_user! %>
+<% else %>
+  $('#shell-history').append('<div class="output"><%= output[:message] %></div>');
+<% end %>
+$('#shell-cli').html('<%= j render('lunar_shell/shells/cli') %>');
