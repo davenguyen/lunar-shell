@@ -3,5 +3,5 @@
     remote: true,
     url: new_passwd_path(current_user) do |f| %>
   <%= f.label :current_password, 'Current password:' %>
-  <%= f.password_field :current_password, class: 'command_line' %>
+  <%= f.password_field :current_password, class: 'input_field' %>
 <% end %>

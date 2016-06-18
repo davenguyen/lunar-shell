@@ -1,6 +1,6 @@
 $('.passwd_form').attr('action', 'passwd/' + <%= current_user.id %>);
 $('label').attr('for', 'user_password_confirmation');
 $('label').text('Retype new password:');
-$('#user_password').removeClass('command_line');
+$('#user_password').removeClass('input_field');
 $('#user_password').toggle();
-$('.passwd_form').append('<input class="command_line" type="password" name="user[password_confirmation]" id="user_password_confirmation">');
+$('.passwd_form').append('<input class="input_field" type="password" name="user[password_confirmation]" id="user_password_confirmation">');

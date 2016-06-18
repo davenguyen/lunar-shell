@@ -1,6 +1,6 @@
 # Focuses input
 focus_cli = ->
-  $('#command_line').focus()
+  $('.input_field').focus()
 
 cli_submit = ->
   $('#cli').submit (e) ->
