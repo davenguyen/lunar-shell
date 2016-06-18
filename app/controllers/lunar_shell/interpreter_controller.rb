@@ -21,8 +21,13 @@ module LunarShell
     helper_method :satellite
 
     def output
-      satellite.try(:run) || "Command not found: #{command}."
+      return command_not_found unless satellite
+      satellite.try(:run)
     end
     helper_method :output
+
+    def command_not_found
+      command ? "Command not found: #{command}." : ''
+    end
   end
 end
