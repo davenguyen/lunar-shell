@@ -1,0 +1,6 @@
+$('.passwd_form').attr('action', 'passwd/' + <%= current_user.id %> + '/confirm');
+$('label').attr('for', 'user_password');
+$('label').text('New password:');
+$('#user_current_password').removeClass('command_line');
+$('#user_current_password').toggle();
+$('.passwd_form').append('<input class="command_line" type="password" name="user[password]" id="user_password">');
