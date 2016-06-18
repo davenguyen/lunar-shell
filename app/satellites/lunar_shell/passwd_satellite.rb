@@ -1,7 +1,7 @@
 module LunarShell
   class PasswdSatellite < LunarShell::Satellite
     def run
-      user ? request_new_password : no_user_error
+      user ? request_current_password : no_user_error
     end
 
     private
@@ -10,8 +10,8 @@ module LunarShell
       { error_message: 'You must be logged in to change your password.' }
     end
 
-    def request_new_password
-      { status: :request_new_password }
+    def request_current_password
+      { status: :request_current_password }
     end
   end
 end

@@ -1,4 +1,4 @@
-<% if output[:status] == :request_new_password %>
+<% if output[:status] == :request_current_password %>
   $('#shell-cli').html('<%= j render('lunar_shell/satellites/passwd/form') %>');
 <% else %>
   $('#shell-history').append('<div class="output"><%= output[:error_message] %></div>');
