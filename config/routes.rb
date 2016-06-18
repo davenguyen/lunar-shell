@@ -8,6 +8,7 @@ LunarShell::Engine.routes.draw do
         patch 'new', to: 'passwd#new', as: :new
       end
     end
+    resources :su, only: [:update]
   end
 
   root 'shells#show'
