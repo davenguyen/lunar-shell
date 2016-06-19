@@ -1,8 +1,6 @@
-<div class="output">
-  Try these commands:<br/>
-  <ul class="satellite-help">
-  <% satellite.run.each do |sat| %> 
-    <li><%= sat %></li>
-  <% end %> 
-  </ul>
-</div>
+Try one of these commands:<br/>
+<ul class="satellite-help">
+<% satellite.commands.each do |c| %> 
+  <li><%= c %></li>
+<% end %> 
+</ul>
