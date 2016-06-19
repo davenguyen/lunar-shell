@@ -5,6 +5,7 @@ module LunarShell
       render 'clear' and return if command == 'clear'
       @output = "Command not found: #{command}." and return unless satellite
       satellite.run!
+      set_current_user!(satellite.user.try(:id))
       render satellite_template if satellite_template?
     end
 
