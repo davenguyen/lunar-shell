@@ -1,0 +1,9 @@
+admin:
+  admin: true
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  username: root
+
+user:
+  admin: false
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  username: dave
