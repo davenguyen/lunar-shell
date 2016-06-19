@@ -1,7 +1,0 @@
-<% if output[:status] == :request_password %>
-  <% set_current_user(output[:user_id]) %>
-  $('#shell-cli').html('<%= j render('lunar_shell/satellites/su/form') %>');
-<% else %>
-  $('#shell-history').append('<div class="output"><%= output[:error_message] %></div>');
-  $('#shell-cli').html('<%= j render('lunar_shell/shells/cli') %>');
-<% end %>

@@ -2,6 +2,6 @@
     html: { class: 'su_form' },
     remote: true,
     url: satellites_su_path(current_user) do |f| %>
-  <%= f.label :password, 'Current password:' %>
+  <%= f.label :password, 'Password:' %>
   <%= f.password_field :password, class: 'input_field' %>
 <% end %>
