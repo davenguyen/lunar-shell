@@ -1,17 +1,17 @@
 module LunarShell
   class ExitSatellite < LunarShell::Satellite
-    def run
+    def run!
       user ? logout : no_exit
     end
 
     private
 
     def logout
-      { status: :logout }
+      self.user = nil
     end
 
     def no_exit
-      { message: "Glitches can't leave their games..." }
+      self.output = "Glitches can't leave their games..."
     end
   end
 end

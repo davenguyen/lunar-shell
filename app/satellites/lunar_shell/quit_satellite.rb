@@ -1,17 +1,17 @@
 module LunarShell
   class QuitSatellite < LunarShell::Satellite
-    def run
-      user ? logout : no_exit
+    def run!
+      user ? logout : no_quit
     end
 
     private
 
     def logout
-      { status: :logout }
+      self.user = nil
     end
 
-    def no_exit
-      { message: 'Never give up! Never surrender!' }
+    def no_quit
+      self.output = 'Never give up! Never surrender!'
     end
   end
 end
