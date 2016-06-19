@@ -1,7 +1,11 @@
 module LunarShell
   class InterpreterController < LunarShell::ApplicationController
     def create
-      render 'clear' if command == 'clear'
+      render 'no_command' and return unless command
+      render 'clear' and return if command == 'clear'
+      @output = "Command not found: #{command}." and return unless satellite
+      satellite.run!
+      render satellite_template if satellite_template?
     end
 
     private
@@ -15,19 +19,36 @@ module LunarShell
     end
     helper_method :command
 
+    def output
+      @output ||= satellite.output
+    end
+    helper_method :output
+
     def satellite
       @satellite ||= LunarShell::Satellite[command, current_user, arguments]
     end
     helper_method :satellite
 
-    def output
-      return command_not_found unless satellite
-      satellite.try(:run)
+    def satellite_partial
+      "lunar_shell/satellites/#{command}/_#{satellite.view_partial}"
     end
-    helper_method :output
+    helper_method :satellite_partial
 
-    def command_not_found
-      command ? "Command not found: #{command}." : ''
+    def satellite_partial?
+      return false unless satellite
+      lookup_context.exists?(satellite_partial)
     end
+    helper_method :satellite_partial?
+
+    def satellite_template
+      "lunar_shell/satellites/#{command}/#{satellite.view_template}"
+    end
+    helper_method :satellite_template
+
+    def satellite_template?
+      return false unless satellite
+      lookup_context.exists?(satellite_template)
+    end
+    helper_method :satellite_template?
   end
 end

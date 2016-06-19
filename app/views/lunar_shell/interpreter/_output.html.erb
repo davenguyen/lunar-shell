@@ -1,3 +1,7 @@
 <div class="output">
-  <%= output.html_safe %>
+  <% if satellite_partial? %>
+    <%= render satellite_partial.gsub('/_', '/') %>
+  <% else %>
+    <%= output.html_safe %>
+  <% end %>
 </div>
