@@ -6,7 +6,7 @@ class QuitTest < SatelliteIntegrationTest
     assert response.body.include?('Never give up!')
   end
 
-  test "logged in response" do
+  test "log out" do
     log_in!
     run_command 'quit'
     assert_not response.body.include?('Never give up!')

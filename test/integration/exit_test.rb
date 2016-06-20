@@ -6,7 +6,7 @@ class ExitTest < SatelliteIntegrationTest
     assert response.body.include?('Glitches')
   end
 
-  test "logged in response" do
+  test "log out" do
     log_in!
     run_command 'exit'
     assert_not response.body.include?('Glitches')

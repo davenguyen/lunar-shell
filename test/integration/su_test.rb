@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SuTest < SatelliteIntegrationTest
-  test "can log in" do
+  test "log in" do
     assert_not response.body.include?(user.username)
     log_in!
     assert response.body.include?(user.username)
