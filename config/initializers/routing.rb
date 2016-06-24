@@ -5,6 +5,8 @@ module ActionDispatch::Routing::Mapper::Resources
   def resource(*resources, &block)
     options = resources.extract_options!.dup
 
+    options[:controller] = resources.first if satellite?
+
     if apply_common_behavior_for(:resource, resources, options, &block)
       return self
     end
@@ -16,7 +18,7 @@ module ActionDispatch::Routing::Mapper::Resources
 
       collection do
         post :create if parent_resource.actions.include?(:create)
-        post :run if @scope[:as] == 'satellites'
+        post :run if satellite?
       end
 
       new do
@@ -32,6 +34,8 @@ module ActionDispatch::Routing::Mapper::Resources
   def resources(*resources, &block)
     options = resources.extract_options!.dup
 
+    options[:controller] = resources.first if satellite?
+
     if apply_common_behavior_for(:resources, resources, options, &block)
       return self
     end
@@ -44,7 +48,7 @@ module ActionDispatch::Routing::Mapper::Resources
       collection do
         get  :index if parent_resource.actions.include?(:index)
         post :create if parent_resource.actions.include?(:create)
-        post :run if @scope[:as] == 'satellites'
+        post :run if satellite?
       end
 
       new do
@@ -55,5 +59,9 @@ module ActionDispatch::Routing::Mapper::Resources
     end
 
     self
+  end
+
+  def satellite?
+    @scope[:as] == 'satellites'
   end
 end
