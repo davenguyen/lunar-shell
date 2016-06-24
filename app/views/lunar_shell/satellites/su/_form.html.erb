@@ -1,7 +1,7 @@
-<%= form_for current_user,
-    html: { class: 'su_form' },
-    remote: true,
-    url: satellites_su_path(current_user) do |f| %>
-  <%= f.label :password, 'Password:' %>
-  <%= f.password_field :password, class: 'input_field' %>
+<%= form_tag satellites_su_path,
+    class: 'su_form',
+    remote: true do %>
+  <%= hidden_field_tag 'user[username]', provided_username %>
+  <%= label_tag :user_password, 'Password:' %>
+  <%= password_field :user, :password, class: 'input_field' %>
 <% end %>

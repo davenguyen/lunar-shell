@@ -6,7 +6,7 @@ LunarShell::Engine.routes.draw do
         patch 'new', to: 'passwd#new', as: :new
       end
     end
-    resources :su, only: [:update]
+    resource :su, only: [:create]
 
     post '*error', to: 'satellites#error'
     post :run
