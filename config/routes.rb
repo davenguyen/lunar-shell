@@ -1,5 +1,7 @@
 LunarShell::Engine.routes.draw do
   namespace :satellites do
+    resource :exit, only: []
+
     resource :passwd, only: [:create] do
       post 'confirm_password'
       post 'new_password'
