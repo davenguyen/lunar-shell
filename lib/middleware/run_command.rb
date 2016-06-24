@@ -14,7 +14,7 @@ class RunCommand
         request.update_param('parameters', params) if params.any?
         request.update_param('command', command)
 
-        env['PATH_INFO'] = "/satellites/#{command}/run" if env['REQUEST_METHOD'] == 'POST'
+        env['PATH_INFO'] = "/satellites/#{command}/run"
       end
     end
 
