@@ -4,21 +4,29 @@ module LunarShell
 
     private
 
-    def clear_current_user!
-      @current_user = nil
-      session[:current_user_id] = nil
-    end
-    helper_method :clear_current_user!
-
     def current_user
-      @current_user ||= set_current_user!(session[:current_user_id])
+      @current_user ||= log_in! session[:current_user_id]
     end
     helper_method :current_user
 
-    def set_current_user!(id)
-      session[:current_user_id] = id
-      @current_user = LunarShell::User.find_by_id(id)
+    def log_in!(username_or_id)
+      @current_user = LunarShell::User.
+        where('id = ? OR username = ?', username_or_id, username_or_id).
+        first
+      session[:current_user_id] = current_user.try(:id)
+      @current_user
     end
-    helper_method :set_current_user!
+    helper_method :log_in!
+
+    def log_out!
+      @current_user = nil
+      session[:current_user_id] = nil
+    end
+    helper_method :log_out!
+
+    def username
+      @username ||= current_user.try(:username)
+    end
+    helper_method :username
   end
 end

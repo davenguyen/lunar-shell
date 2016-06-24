@@ -6,9 +6,10 @@ module LunarShell
       end
 
       def create
-        set_current_user!(su_params[:username])
-        unless current_user.try(:authenticate, su_params[:password])
-          clear_current_user!
+
+        if !log_in!(su_params[:username]).
+            try(:authenticate, su_params[:password])
+          log_out!
           @error_message = 'Sorry'
         end
       end
