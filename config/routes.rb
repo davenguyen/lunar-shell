@@ -7,6 +7,8 @@ LunarShell::Engine.routes.draw do
       post 'new_password'
     end
 
+    resource :quit, only: []
+
     resource :su, only: [:create]
 
     post '*error', to: 'satellites#error'
