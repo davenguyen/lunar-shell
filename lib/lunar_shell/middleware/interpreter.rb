@@ -1,6 +1,6 @@
 module LunarShell
   module Middleware
-    class RunCommand
+    class Interpreter
       def initialize(app, options = {})
         @app = app
       end

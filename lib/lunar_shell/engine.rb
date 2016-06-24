@@ -3,7 +3,7 @@ module LunarShell
     isolate_namespace LunarShell
 
     initializer 'lunar_shell.add_middleware' do |app|
-      app.middleware.insert_after Rack::ETag, LunarShell::Middleware::RunCommand
+      app.middleware.insert_after Rack::ETag, LunarShell::Middleware::Interpreter
     end
   end
 end
