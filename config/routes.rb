@@ -1,6 +1,4 @@
 LunarShell::Engine.routes.draw do
-  post :interpreter, to: 'interpreter#create'
-
   namespace :satellites do
     resources :passwd, only: [:update] do
       member do
@@ -9,6 +7,9 @@ LunarShell::Engine.routes.draw do
       end
     end
     resources :su, only: [:update]
+
+    post '*error', to: 'satellites#error'
+    post :run
   end
 
   root 'shells#show'
