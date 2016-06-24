@@ -16,5 +16,10 @@ module LunarShell
       @command ||= params[:command]
     end
     helper_method :command
+
+    def parameters
+      @parameters ||= params[:parameters]
+    end
+    helper_method :parameters
   end
 end
