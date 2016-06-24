@@ -9,7 +9,7 @@ module LunarShell
 
     def initialize_shell
       session[:prompt] = USER_PROMPT
-      session[:current_user_id] = nil
+      session[:current_user_id] ||= nil
     end
   end
 end
