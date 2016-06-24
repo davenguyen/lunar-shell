@@ -1,11 +1,10 @@
 LunarShell::Engine.routes.draw do
   namespace :satellites do
-    resources :passwd, only: [:update] do
-      member do
-        patch 'confirm', to: 'passwd#confirm'
-        patch 'new', to: 'passwd#new', as: :new
-      end
+    resource :passwd, only: [:create] do
+      post 'confirm_password'
+      post 'new_password'
     end
+
     resource :su, only: [:create]
 
     post '*error', to: 'satellites#error'

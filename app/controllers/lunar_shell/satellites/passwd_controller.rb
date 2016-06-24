@@ -1,14 +1,19 @@
 module LunarShell
   module Satellites
     class PasswdController < LunarShell::SatellitesController
-      def new
+      def run
+        render 'no_user_error' unless current_user
       end
 
-      def confirm
+      def new_password
       end
 
-      def update
-        @message = if current_user.authenticate(passwd_params[:current_password]) && current_user.update(passwd_params)
+      def confirm_password
+      end
+
+      def create
+        @message = if current_user.authenticate(current_password) &&
+            current_user.update(passwd_params)
           'Password updated.'
         else
           'try again'
@@ -16,6 +21,10 @@ module LunarShell
       end
 
       private
+
+      def current_password
+        passwd_params[:current_password]
+      end
 
       def passwd_params
         params.
