@@ -1,4 +1,4 @@
-# Adds run route to all satellites
+# TODO: gotta be a better way than copying everything
 require 'action_dispatch/routing/mapper'
 
 module ActionDispatch::Routing::Mapper::Resources
