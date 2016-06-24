@@ -13,7 +13,7 @@ module LunarShell
       @current_user = LunarShell::User.
         where('id = ? OR username = ?', username_or_id, username_or_id).
         first
-      session[:current_user_id] = current_user.try(:id)
+      session[:current_user_id] = @current_user.try(:id)
       @current_user
     end
     helper_method :log_in!
