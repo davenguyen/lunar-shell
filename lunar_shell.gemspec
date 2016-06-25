@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
   s.add_dependency "rails",        "~> 4.2"
   s.add_dependency "sass-rails",   "~> 5.0"
 
-  s.add_development_dependency "capybara"
-  s.add_development_dependency "chromedriver-helper"
-  s.add_development_dependency "pg"
-  s.add_development_dependency "selenium-webdriver"
+  s.add_development_dependency "capybara",            "~> 2.7"
+  s.add_development_dependency "chromedriver-helper", "~> 1.0"
+  s.add_development_dependency "pg",                  "~> 0.18"
+  s.add_development_dependency "selenium-webdriver",  "~> 2.53"
 end
