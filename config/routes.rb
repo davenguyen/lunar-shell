@@ -13,9 +13,8 @@ LunarShell::Engine.routes.draw do
 
     resource :su, only: [:create]
 
-    post '*error', to: 'satellites#error'
-    post :run
   end
+  post 'satellites/*error', to: 'satellites#error'
 
   root 'shells#show'
 end

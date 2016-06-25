@@ -1,4 +1,4 @@
-<%= form_tag satellites_run_path, id: 'cli', remote: true do %>
+<%= form_tag '/satellites/run', id: 'cli', remote: true do %>
   <%= label_tag :command_line, render('/lunar_shell/shells/prompt') %>
   <%= text_field_tag :command_line, '', class: 'input_field' %>
 <% end %>
