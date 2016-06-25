@@ -10,10 +10,16 @@ cli_submit = ->
       $('#shell-cli .prompt').clone().appendTo('#shell-history .input:last')
       $('.input').last().append input
 
+set_input_field_width = ->
+  body_w = $('body').width()
+  prompt_w = $('#shell-cli label').width()
+  $('.input_field').width(body_w - prompt_w - 50)
+
 $ ->
   # Set on page load
   focus_cli()
   cli_submit()
+  set_input_field_width()
 
   # Focus when clicking anywhere on the page
   $(document).click ->
@@ -23,3 +29,7 @@ $ ->
 $(document).ajaxComplete ->
   focus_cli()
   cli_submit()
+  set_input_field_width()
+
+$(window).on 'resize', ->
+  set_input_field_width()
