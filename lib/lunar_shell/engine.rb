@@ -9,5 +9,7 @@ module LunarShell
     initializer "lunar_shell.assets.precompile" do |app|
       app.config.assets.precompile += %w(lunar_shell.coffee lunar_shell.sass)
     end
+
+    config.app_generators.satellite :satellite
   end
 end

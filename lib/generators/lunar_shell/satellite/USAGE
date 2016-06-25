@@ -1,0 +1,14 @@
+Description:
+    Creates a new Lunar shell satellite
+
+Example:
+    rails generate lunar_shell:satellite thing
+
+    This will create:
+        app/controllers/lunar_shell/satellites/thing_controller.rb
+        app/views/lunar_shell/satellites/thing/run.js.erb
+    
+    And add this route:
+        namespace :satellites do
+          resource :thing, only: []
+        end
