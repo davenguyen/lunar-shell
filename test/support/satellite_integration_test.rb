@@ -1,27 +1,33 @@
 class SatelliteIntegrationTest < ActionDispatch::IntegrationTest
+  require "capybara/rails"
+  include Capybara::DSL
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.current_driver = :selenium
+
   def admin
     @admin ||= lunar_shell_users(:admin)
   end
 
-  def assert_body(text)
-    assert response.body.include?(text)
-  end
-
-  def assert_body_not(text)
-    assert_not response.body.include?(text)
-  end
-
-  def log_in!(u = user)
+  def log_in(u = user, p = 'password')
     run_command "su #{u.username}"
-    xhr :patch, "/satellites/su/#{u.id}", user: { password: 'password' }
+    enter p
   end
 
-  def run_command(input)
-    xhr :post, '/interpreter', command_line: input
+  def log_out
+    run_command 'exit'
   end
+
+  def run_command(input, el = '.input_field')
+    find(el).set "#{input}\n"
+  end
+  alias_method :enter, :run_command
 
   def setup
-    get '/'
+    visit '/'
   end
 
   def user
