@@ -4,6 +4,8 @@ LunarShell::Engine.routes.draw do
 
     resource :help, only: []
 
+    resource :history, only: []
+
     resource :passwd, only: [:create] do
       post 'confirm_password'
       post 'new_password'

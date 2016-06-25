@@ -15,11 +15,23 @@ set_input_field_width = ->
   prompt_w = $('#shell-cli label').width()
   $('.input_field').width(body_w - prompt_w - 50)
 
+history_searchable = ->
+  $('#command_line').keyup (e) ->
+    search_history(e)
+
+search_history = (e) ->
+  e.preventDefault()
+  dir = switch e.which
+    when 38 then 'up'
+    when 40 then 'down'
+  $.post '/satellites/run.js', {command_line: 'history ' + dir} if dir?
+
 $ ->
   # Set on page load
   focus_cli()
   cli_submit()
   set_input_field_width()
+  history_searchable()
 
   # Focus when clicking anywhere on the page
   $(document).click ->
@@ -30,6 +42,7 @@ $(document).ajaxComplete ->
   focus_cli()
   cli_submit()
   set_input_field_width()
+  history_searchable()
 
 $(window).on 'resize', ->
   set_input_field_width()

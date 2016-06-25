@@ -1,5 +1,7 @@
 module LunarShell
   class SatellitesController < LunarShell::ApplicationController
+    before_action :log_command!
+
     def run
       render 'no_command'
     end
@@ -17,9 +19,19 @@ module LunarShell
     end
     helper_method :command
 
+    def history
+      @history ||= session[:history]
+    end
+
     def parameters
       @parameters ||= params[:parameters]
     end
     helper_method :parameters
+
+    def log_command!
+      return if !command || command == 'history'
+      session[:history] << "#{command} #{parameters.try :join, ' '}".strip
+      session[:history_index] = session[:history].count
+    end
   end
 end
