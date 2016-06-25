@@ -12,8 +12,7 @@ module LunarShell
       end
 
       def create
-        @message = if current_user.authenticate(current_password) &&
-            current_user.update(passwd_params)
+        @message = if user_auth && update_password!
           'Password updated.'
         else
           'try again'
@@ -30,6 +29,14 @@ module LunarShell
         params.
           require(:user).
           permit(:current_password, :password, :password_confirmation)
+      end
+
+      def update_password!
+        current_user.update(passwd_params)
+      end
+
+      def user_auth
+        current_user.authenticate(current_password)
       end
     end
   end
