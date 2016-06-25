@@ -1,6 +1,8 @@
 module LunarShell
   module Satellites
     class HistoryController < LunarShell::SatellitesController
+      PUBLIC = false
+
       def run
         @command = up? ? up_value(i-1) : down_value(i+1)
       end

@@ -1,5 +1,7 @@
 module LunarShell
   class SatellitesController < LunarShell::ApplicationController
+    PUBLIC = true
+
     before_action :log_command!
 
     def run
