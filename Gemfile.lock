@@ -160,11 +160,11 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capybara
-  chromedriver-helper
+  capybara (~> 2.7)
+  chromedriver-helper (~> 1.0)
   lunar_shell!
-  pg
-  selenium-webdriver
+  pg (~> 0.18)
+  selenium-webdriver (~> 2.53)
 
 BUNDLED WITH
    1.12.5
