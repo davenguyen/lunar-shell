@@ -5,10 +5,13 @@ focus_cli = ->
 cli_submit = ->
   $('#cli').submit (e) ->
     input = $('#command_line').val()
-    if input != 'clear'
+    if clear_command(input)
       $('#shell-history').append "<div class=\"input\"></div>"
       $('#shell-cli .prompt').clone().appendTo('#shell-history .input:last')
       $('.input').last().append input
+
+clear_command = (input) ->
+  !(input == 'clear' || input.startsWith 'clear ')
 
 set_input_field_width = ->
   body_w = $('body').width()
