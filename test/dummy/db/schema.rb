@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160616015436) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "lunar_shell_users", force: :cascade do |t|
     t.string   "username",        limit: 32,                 null: false
     t.string   "password_digest",                            null: false
@@ -21,6 +24,6 @@ ActiveRecord::Schema.define(version: 20160616015436) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "lunar_shell_users", ["username"], name: "index_lunar_shell_users_on_username", unique: true
+  add_index "lunar_shell_users", ["username"], name: "index_lunar_shell_users_on_username", unique: true, using: :btree
 
 end
