@@ -23,5 +23,9 @@ Gem::Specification.new do |s|
   s.add_dependency "rails",        "~> 4.2"
   s.add_dependency "sass-rails",   "~> 5.0"
 
+  s.add_development_dependency "byebug"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "chromedriver-helper"
   s.add_development_dependency "pg"
+  s.add_development_dependency "selenium-webdriver"
 end
