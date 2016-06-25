@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class ExitTest < SatelliteIntegrationTest
-  test "not logged in response" do
+  test "not logged in" do
     run_command 'exit'
-    assert_body 'Glitches'
+    page.has_content? 'Glitches'
   end
 
-  test "log out" do
-    log_in!
+  test "logged in" do
+    log_in
     run_command 'exit'
-    assert_body_not 'Glitches'
+    page.has_no_content? 'Glitches'
   end
 end

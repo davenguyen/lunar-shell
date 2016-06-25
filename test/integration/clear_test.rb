@@ -1,11 +1,10 @@
 require 'test_helper'
 
 class ClearTest < SatelliteIntegrationTest
-  test "clears history" do
-    run_command 'exit'
-    assert_body 'Glitches'
+  test 'clears history' do
+    page.has_content? 'Welcome to Lunar shell!'
 
     run_command 'clear'
-    assert_body_not 'Glitches'
+    page.has_no_content? 'Welcome to Lunar shell!'
   end
 end

@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class QuitTest < SatelliteIntegrationTest
-  test "not logged in response" do
+  test "not logged in" do
     run_command 'quit'
-    assert_body 'Never give up!'
+    page.has_content? 'Never give up!'
   end
 
-  test "log out" do
-    log_in!
+  test "logged in" do
+    log_in
     run_command 'quit'
-    assert_body_not 'Never give up!'
+    page.has_content? 'Never give up!'
   end
 end

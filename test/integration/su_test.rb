@@ -2,20 +2,21 @@ require 'test_helper'
 
 class SuTest < SatelliteIntegrationTest
   test "log in" do
-    assert_body_not user.username
-    log_in!
-    assert_body user.username
+    page.has_no_content? user.username
+    log_in
+    page.has_content? user.username
   end
 
   test "can substitue user" do
-    assert_body_not user.username
-    assert_body_not admin.username
+    page.has_no_content? user.username
+    page.has_no_content? admin.username
 
-    log_in!
-    assert_body user.username
-    assert_body_not admin.username
+    log_in
+    page.has_content? user.username
+    page.has_no_content? admin.username
 
-    log_in!(admin)
-    assert_body admin.username
+    log_in(admin)
+    page.has_content? user.username
+    page.has_content? admin.username
   end
 end

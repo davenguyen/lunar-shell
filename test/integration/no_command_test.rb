@@ -2,8 +2,9 @@ require 'test_helper'
 
 class NoCommandTest < SatelliteIntegrationTest
   test "nothing sent" do
+    page.has_no_content? '> >'
+
     run_command ''
-    assert_response :success
-    assert_body_not 'output'
+    page.has_content? '> >'
   end
 end
