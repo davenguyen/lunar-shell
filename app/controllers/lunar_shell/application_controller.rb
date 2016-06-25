@@ -10,8 +10,11 @@ module LunarShell
     helper_method :current_user
 
     def log_in!(username_or_id)
+      uid = [username_or_id, nil]
+      uid.reverse! if username_or_id.is_a?(String)
+
       @current_user = LunarShell::User.
-        where('id = ? OR username = ?', username_or_id, username_or_id).
+        where('id = ? OR username = ?', *uid).
         first
       session[:current_user_id] = @current_user.try(:id)
       @current_user
