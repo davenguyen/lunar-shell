@@ -33,34 +33,40 @@ module LunarShell
     end
 
     def satellite_route(name)
-      route    = "      resource :#{name}, only: []\n"
+      route = "resource :#{name}, only: []\n"
       log :route, route.strip
 
-      sentinel = /\.routes\.draw do\s*\n/m
+      scopes = [{sentinel: /\.routes\.draw do\s*\n/m}]
 
-      ls_start = "  scope module: :lunar_shell do\n"
-      ls_end = "  end\n"
-      ls_str = "#{ls_start}#{ls_end}"
-      ls_regex = /^#{ls_start}.*^#{ls_end}/m
+      mp = LunarShell::Engine.mount_path.gsub(/^\//, '')
+      scopes << satellite_scope("scope :#{mp}", scopes.count) if mp.present?
 
-      s_start = "    namespace :satellites do\n"
-      s_end = "    end\n"
-      s_str = "#{s_start}#{s_end}"
-      s_regex = /^#{s_start}.*^#{s_end}/m
+      ["scope module: :lunar_shell", 'namespace :satellites'].each do |name|
+        scopes << satellite_scope(name, scopes.count)
+      end
 
+      scopes << { name: "#{'  ' * scopes.count}#{route}" }
 
       in_root do
-        content = File.binread("#{destination_root}/config/routes.rb")
-
-        inject_into_file 'config/routes.rb',
-          ls_str, { after: sentinel, verbose: false } if !(content =~ ls_regex)
-
-        inject_into_file 'config/routes.rb',
-          s_str, { after: ls_start, verbose: false } if !(content =~ s_regex)
-
-        inject_into_file 'config/routes.rb',
-          route, { after: s_start, verbose: false }
+        scopes.drop(1).each_with_index do |scope, i|
+          content = File.binread("#{destination_root}/config/routes.rb")
+          next if content =~ scope[:sentinel]
+          inject_into_file 'config/routes.rb',
+            scope[:name],
+            after: scopes[i][:sentinel],
+            verbose: false
+        end
       end
+    end
+
+    def satellite_scope(name, level = 0)
+      spaces = '  ' * level
+      scope_start = "#{spaces}#{name} do\n"
+      scope_end = "#{spaces}end\n"
+      {
+        name: "#{scope_start}#{scope_end}",
+        sentinel: /^#{scope_start}/m
+      }
     end
   end
 end
