@@ -10,7 +10,7 @@ This project was influenced by [XKCD CLI](http://uni.xkcd.com/).
 Add `lunar_shell` gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'lunar_shell', '~> 0.4.0'
+gem 'lunar_shell', '~> 0.4.1'
 ```
 
 Mount the engine in _config/routes_:
