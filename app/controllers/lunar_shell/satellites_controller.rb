@@ -25,6 +25,11 @@ module LunarShell
     end
     helper_method :parameters
 
+    def parameters?
+      parameters.present?
+    end
+    helper_method :parameters?
+
     def log_command!
       return if !command || command == 'history'
       session[:history] << "#{command} #{parameters.try :join, ' '}".strip
