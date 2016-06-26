@@ -1,4 +1,4 @@
 <% if defined?(@error_message) %>
-  $('#shell-history').append('<div class="output"><%= @error_message %></div>');
+  $('#shell-history').append('<div class="history-io history-io-output"><%= @error_message %></div>');
 <% end %>
 $('#shell-cli').html('<%= j render('lunar_shell/shells/cli') %>');
