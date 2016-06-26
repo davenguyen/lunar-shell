@@ -58,4 +58,4 @@ Then start your server and start typing!
 To get the full effect of Lunar shell, you'll need to add _satellites_ to your
 shell. Think of satellites as executable programs or scripts on a computer. The
 more satellites you add, the more robust your shell would be. Check out the wiki
-to [create your own satellites](https://github.com/davenguyen/lunar-shell/wiki/Hello,-Satellite!-(a-gentleman's-guide-to-creating-your-first-satellite))).
+to [create your own satellites](https://github.com/davenguyen/lunar_shell/wiki/Hello,-Satellite!-(a-gentleman's-guide-to-creating-your-first-satellite))).
