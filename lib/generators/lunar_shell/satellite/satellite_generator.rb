@@ -8,13 +8,13 @@ module LunarShell
     end
 
     def add_route
-      satellite_route plural_name.singularize
+      satellite_route singular_name
     end
 
     private
 
     def base_path(type)
-      "app/#{type}/lunar_shell/satellites/#{plural_name.singularize}"
+      "app/#{type}/lunar_shell/satellites/#{singular_name}"
     end
 
     def controller_path
