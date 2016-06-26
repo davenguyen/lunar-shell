@@ -2,9 +2,12 @@ module LunarShell
   class SatelliteGenerator < Rails::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
+    class_option :include_test, aliases: '-t', desc: 'Include test file'
+
     def copy_satellite_files
       template 'controller.rb', controller_path
       template 'view.rb', view_path
+      template 'test.rb', test_path if options[:include_test]
     end
 
     def add_route
@@ -19,6 +22,10 @@ module LunarShell
 
     def controller_path
       "#{base_path :controllers}_controller.rb"
+    end
+
+    def test_path
+      "test/integration/#{singular_name}_test.rb"
     end
 
     def view_path
