@@ -5,10 +5,6 @@ module LunarShell
     before_action :log_command!
 
     def run
-      render 'no_command'
-    end
-
-    def error
       render 'no_command' and return unless command
       render 'command_not_found'
     end
