@@ -16,8 +16,7 @@ module LunarShell
             request.update_param('parameters', params) if params.any?
             request.update_param('command', command)
 
-            run_path = LunarShell::Engine.routes.url_helpers.satellites_run_path
-            env['PATH_INFO'] = run_path.gsub 'run', "#{command}/run"
+            env['PATH_INFO'] = LunarShell::Engine.run_command_path(command)
           end
         end
 
