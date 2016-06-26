@@ -1,25 +1,54 @@
 # Lunar shell
 
 Lunar shell provides a command-line interface for any website. Check out
-[the demo](https://lunarshell.herokuapp.com/) or
-[inthenight.net](http://www.inthenight.net/) for examples.
+[inthenight.net](http://inthenight.net/) to see a live example.
 
 This project was influenced by [XKCD CLI](http://uni.xkcd.com/).
 
 ## Getting Started
 
-Add `lunar_shell` gem to your Gemfile:
+Add `lunar_shell` gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'lunar_shell', '~> 0.3.0'
+gem 'lunar_shell', '~> 0.4.0'
 ```
 
-Mount the engine in `config/routes`:
+Mount the engine in _config/routes_:
 
 ```ruby
 Rails.application.routes.draw do
   mount LunarShell::Engine, at: "/shell"
 end
+```
+
+While in development, we'll want to eager load so satellites like `help` can
+function properly. Modify `config.eager_load` in
+_config/environments/development.rb_:
+
+```ruby
+Rails.application.configure do
+  # Do eager load code on boot.
+  config.eager_load = true
+end
+```
+
+Include the engine's assets in _application.js_ and _application.css_
+(alternately, you can add this to your _application.html_ layout, just make sure
+it goes before the call to your applications js/css file.):
+
+```ruby
+//= require jquery
+//= require jquery_ujs
+//= require lunar_shell/application
+//= require_tree .
+```
+
+```ruby
+ *
+ *= require lunar_shell/application
+ *= require_tree .
+ *= require_self
+ */
 ```
 
 Then start your server and start typing!
