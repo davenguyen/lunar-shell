@@ -12,7 +12,8 @@ module LunarShell
       def commands
         @commands ||= self.class.superclass.subclasses.
           select { |sat| sat::PUBLIC }.
-          map { |sat| sat.name.split('::').last.underscore[0..-12] }
+          map { |sat| sat.name.split('::').last.underscore[0..-12] }.
+          sort
       end
       helper_method :commands
     end
